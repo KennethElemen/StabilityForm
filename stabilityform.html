@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stability Data Input Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <h2 class="center">Stability Data Input Form</h2>
+
+    <form id="stabilityForm">
+        <table id="dataTable">
+            <tr>
+                <th colspan="2">PRODUCT</th>
+                <td colspan="2"><input type="text" name="product" value="SODIUM ASCORBATE WITH ZINC" required></td>
+                <th>LOT NO.</th>
+                <td><input type="text" name="lot_no"  required></td>
+            </tr>
+            <tr>
+                <th colspan="2">NAME</th>
+                <td colspan="2"><input type="text" name="name" value="600mg/10 CAPSULE" required></td>
+                <th>PACKING</th>
+                <td><input type="text" name="packing" value="BLISTER PACK / ALU ORANGE x 10's (Box of 100's)" required></td>
+            </tr>
+            <tr>
+                <th colspan="2">BRANDNAME</th>
+                <td colspan="2"><input type="text" name="brandname" value="PROTEC-ZINC" required></td>
+                <th>STORAGE TEMPERATURE</th>
+                <td><input type="text" name="storage_temp" value="30°C ± 2°C" required></td>
+            </tr>
+            <tr>
+                <th>MFG. DATE</th>
+                <td><input type="date" name="mfg_date" required></td>
+                <th>EXPIRY DATE</th>
+                <td><input type="date" name="expiry_date" required></td>
+                <th>RH</th>
+                <td><input type="text" name="rh" value="75% ± 5%" required></td>
+            </tr>
+        </table>
+
+        <br>
+
+        <table id="dataTable2">
+            <tr class="header">
+                <th>PARAMETER</th>
+                <th>SPECIFICATIONS</th>
+                <th>Start Date</th>
+                <th>1st Cycle Date</th>
+                <th>2nd Cycle Date</th>
+                <th>3rd Cycle Date</th>
+                <th>4th Cycle Date</th>
+                <th>5th Cycle Date</th>
+                <th>6th Cycle Date</th>
+                <th>7th Cycle Date</th>
+            </tr>
+            <tr>
+                <td>DESCRIPTION</td>
+                <td><input type="text" name="description" value="White or very faintly yellow crystalline powder encapsulated in EGC size '0' orange cap and body." required></td>
+                <td><input type="date" name="start_date" id="start_date" required onchange="generateCycleDates()"></td>
+                <td><input type="text" name="cycle_1_date" id="cycle_1_date" readonly></td>
+                <td><input type="text" name="cycle_2_date" id="cycle_2_date" readonly></td>
+                <td><input type="text" name="cycle_3_date" id="cycle_3_date" readonly></td>
+                <td><input type="text" name="cycle_4_date" id="cycle_4_date" readonly></td>
+                <td><input type="text" name="cycle_5_date" id="cycle_5_date" readonly></td>
+                <td><input type="text" name="cycle_6_date" id="cycle_6_date" readonly></td>
+                <td><input type="text" name="cycle_7_date" id="cycle_7_date" readonly></td>
+            </tr>
+            <tr>
+                <td>IDENTIFICATION</td>
+                <td><input type="text" name="identification" value="Add 1 ml of 0.1 N HCl to 4 ml of a solution..." required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>WEIGHT PER CAPSULE</td>
+                <td><input type="text" name="weight_per_capsule" value="746.27 mg ± 3%" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>DISINTEGRATION TIME</td>
+                <td><input type="text" name="disintegration_time" value="NMT 45 minutes" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>MOISTURE CONTENT</td>
+                <td><input type="text" name="moisture_content" value="Not less than 13.0% and not more than 16.0%" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>UNIFORMITY OF DOSAGE UNIT</td>
+                <td><input type="text" name="uniformity" value="The amount of active ingredient in each of the 10 capsules..." required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr class="header">
+                <td colspan="10">MICROBIAL LIMITS</td>
+            </tr>
+            <tr>
+                <td>Total Bacterial Count</td>
+                <td><input type="text" name="total_bacterial" value="Not more than 3000 cfu/g" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>Molds & Yeasts Count</td>
+                <td><input type="text" name="molds_yeasts" value="Not more than 300 cfu/g" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>Salmonella Species</td>
+                <td><input type="text" name="salmonella" value="Negative" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>Escherichia coli</td>
+                <td><input type="text" name="ecoli" value="Negative" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>Staphylococcus Aureus</td>
+                <td><input type="text" name="staphylococcus" value="Negative" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>Sodium Ascorbate</td>
+                <td><input type="text" name="sodium_ascorbate" value="NLT 90.0%-NMT 110.0%" required></td>
+                <td colspan="8"></td>
+            </tr>
+            <tr>
+                <td>Zinc Sulfate</td>
+                <td><input type="text" name="zinc_sulfate" value="NLT 90.0%-NMT 110.0%" required></td>
+                <td colspan="8"></td>
+            </tr>
+        </table>
+
+        <br>
+
+        <input type="button" value="Download as Excel" onclick="downloadExcel()">
+    </form>
+
+    <script>
+        function addMonthsToDate(date, months) {
+            var d = new Date(date);
+            d.setMonth(d.getMonth() + months);
+            return d.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        function generateCycleDates() {
+            var startDate = document.getElementById('start_date').value;
+
+            if (startDate) {
+                document.getElementById('cycle_1_date').value = addMonthsToDate(startDate, 3);
+                document.getElementById('cycle_2_date').value = addMonthsToDate(startDate, 6);
+                document.getElementById('cycle_3_date').value = addMonthsToDate(startDate, 9);
+                document.getElementById('cycle_4_date').value = addMonthsToDate(startDate, 12);
+                document.getElementById('cycle_5_date').value = addMonthsToDate(startDate, 15);
+                document.getElementById('cycle_6_date').value = addMonthsToDate(startDate, 18);
+                document.getElementById('cycle_7_date').value = addMonthsToDate(startDate, 21);
+            }
+        }
+
+        function downloadExcel() {
+    var wb = XLSX.utils.book_new();
+    
+    // Create worksheet for dataTable
+    var ws1 = XLSX.utils.table_to_sheet(document.getElementById('dataTable'));
+    var ws2 = XLSX.utils.table_to_sheet(document.getElementById('dataTable2'));
+
+    // Function to update worksheet with input field values
+    function updateWorksheetWithInputs(ws, tableId) {
+        var table = document.getElementById(tableId);
+        var rows = table.querySelectorAll('tr');
+        
+        rows.forEach(function(row, rowIndex) {
+            var cells = row.querySelectorAll('td, th');
+            
+            cells.forEach(function(cell, cellIndex) {
+                var input = cell.querySelector('input');
+                if (input) {
+                    var cellAddress = XLSX.utils.encode_cell({ r: rowIndex, c: cellIndex });
+                    ws[cellAddress] = { v: input.value }; // Update cell value with input value
+                }
+            });
+        });
+    }
+
+    // Update worksheets with input field values
+    updateWorksheetWithInputs(ws1, 'dataTable');
+    updateWorksheetWithInputs(ws2, 'dataTable2');
+
+    // Set column widths for the first table
+    ws1['!cols'] = [
+        { wpx: 200 }, // Column 1 width
+        { wpx: 400 }, // Column 2 width
+        { wpx: 150 }, // Column 3 width
+        { wpx: 150 }, // Column 4 width
+        { wpx: 150 }, // Column 5 width
+        { wpx: 150 }, // Column 6 width
+        { wpx: 150 }, // Column 7 width
+        { wpx: 150 }, // Column 8 width
+        { wpx: 150 }, // Column 9 width
+        { wpx: 150 }  // Column 10 width
+    ];
+
+    // Apply border styling to all cells for the first table
+    var range1 = XLSX.utils.decode_range(ws1['!ref']);
+    for (var row = range1.s.r; row <= range1.e.r; row++) {
+        for (var col = range1.s.c; col <= range1.e.c; col++) {
+            var cell = ws1[XLSX.utils.encode_cell({ r: row, c: col })];
+            if (!cell) continue;
+            cell.s = cell.s || {};
+            cell.s.border = {
+                top: { style: 'thin' },
+                left: { style: 'thin' },
+                bottom: { style: 'thin' },
+                right: { style: 'thin' }
+            };
+        }
+    }
+
+    // Set row heights if needed for the first table
+    ws1['!rows'] = [
+        { hpx: 30 }, // Row 1 height
+        { hpx: 30 }, // Row 2 height
+        { hpx: 30 }, // Row 3 height
+        { hpx: 30 }  // Row 4 height
+        // Add more rows if needed
+    ];
+
+    // Set column widths for the second table
+    ws2['!cols'] = [
+        { wpx: 200 }, // Column 1 width
+        { wpx: 400 }, // Column 2 width
+        { wpx: 150 }, // Column 3 width
+        { wpx: 150 }, // Column 4 width
+        { wpx: 150 }, // Column 5 width
+        { wpx: 150 }, // Column 6 width
+        { wpx: 150 }, // Column 7 width
+        { wpx: 150 }, // Column 8 width
+        { wpx: 150 }, // Column 9 width
+        { wpx: 150 }  // Column 10 width
+    ];
+
+    // Apply border styling to all cells for the second table
+    var range2 = XLSX.utils.decode_range(ws2['!ref']);
+    for (var row = range2.s.r; row <= range2.e.r; row++) {
+        for (var col = range2.s.c; col <= range2.e.c; col++) {
+            var cell = ws2[XLSX.utils.encode_cell({ r: row, c: col })];
+            if (!cell) continue;
+            cell.s = cell.s || {};
+            cell.s.border = {
+                top: { style: 'thin' },
+                left: { style: 'thin' },
+                bottom: { style: 'thin' },
+                right: { style: 'thin' }
+            };
+        }
+    }
+
+    // Set row heights if needed for the second table
+    ws2['!rows'] = [
+        { hpx: 30 }, // Row 1 height
+        { hpx: 30 }, // Row 2 height
+        { hpx: 30 }, // Row 3 height
+        { hpx: 30 }  // Row 4 height
+        // Add more rows if needed
+    ];
+
+    // Append worksheets to the workbook
+    XLSX.utils.book_append_sheet(wb, ws1, "Product Info");
+    XLSX.utils.book_append_sheet(wb, ws2, "Test Results");
+
+    // Save the workbook
+    XLSX.writeFile(wb, 'Stability_Data.xlsx');
+}
+
+    </script>
+</body>
+</html>
